@@ -1,22 +1,19 @@
 {
-  "name": "primecanvas",
-  "version": "1.0.0",
-  "description": "Beautifully simple prime dots artwork. Each dot represents a prime number from 0 - 144",
-  "main": "primeCanvas.js",
-  "scripts": {
-    "start": "http-server -a localhost -p $PORT"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pandasa123/primeCanvas.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pandasa123/primeCanvas/issues"
-  },
-  "homepage": "https://github.com/pandasa123/primeCanvas#readme",
-  "dependencies": {
-    "http-server": "^0.11.1"
-  }
+	"name": "primecanvas",
+	"version": "1.0.0",
+	"description": "Beautifully simple prime dots artwork. Each dot represents a prime number from 0 - 144",
+	"main": "primeCanvas.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pandasa123/primeCanvas.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/pandasa123/primeCanvas/issues"
+	},
+	"homepage": "https://github.com/pandasa123/primeCanvas#readme"
 }
