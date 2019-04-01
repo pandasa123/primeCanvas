@@ -2001,6 +2001,6 @@
     }
   },
   "scripts": {
-    "start": "live-server ."
+    "start": "http-server -a localhost -p $PORT"
   }
 }
