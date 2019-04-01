@@ -66,6 +66,7 @@ $(document).ready(function () {
     if (inputVal > 0 && inputVal < 13) {
       base = inputVal
       amount = base * base
+      $('#numDisplayed').text(amount * amount)
       redraw()
     } else {
       alert('Input must be 1 - 12')
@@ -81,6 +82,7 @@ $(document).ready(function () {
       $input.change()
       base = inputVal
       amount = base * base
+      $('#numDisplayed').text(amount * amount)
       redraw()
     }
     return false
@@ -94,6 +96,7 @@ $(document).ready(function () {
       $input.change()
       base = inputVal
       amount = base * base
+      $('#numDisplayed').text(amount * amount)
       redraw()
     }
     return false
@@ -107,6 +110,7 @@ $(document).ready(function () {
         if (base < 12) {
           base += 1
           amount = base * base
+          $('#numDisplayed').text(amount * amount)
           let $input = $('#dimInput')
           $input.val(base)
           $input.change()
@@ -126,6 +130,7 @@ $(document).ready(function () {
     base = 1
     amount = 1
     currPlaying = false
+    $('#numDisplayed').text(amount * amount)
     let $input = $('#dimInput')
     $input.val(base)
     $input.change()
