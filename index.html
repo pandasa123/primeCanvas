@@ -2,11 +2,28 @@
 
 <head>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel='stylesheet' href='/styles.css' type='text/css'>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
 </head>
 
 <body>
-    <script src="primeCanvas.js"></script>
+    <div id='container'>
+        <div id='canvas'>
+            <script src="primeCanvas.js"></script>
+        </div>
+        <div id='settings'>
+            <div id='inputDiv'>
+                <h1>Dimension</h1>
+                <div class="number">
+                    <span class="minus">-</span>
+                    <input id='dimInput' type="text" value="1" />
+                    <span class="plus">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
