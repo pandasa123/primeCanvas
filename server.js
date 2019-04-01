@@ -1,34 +1,15 @@
+const express = require('express')
 const http = require('http')
-const path = require('path')
-const fs = require('fs')
 
-let server = http.createServer(handleRequest)
-server.listen(process.env.PORT || 8080)
+const app = express()
 
-// console.log('Server started on port 8080')
+httpServer = http.Server(app)
 
-function handleRequest (req, res) {
-  let pathName = req.url
+app.use(express.static(__dirname))
 
-  if (pathName == '/') {
-    pathName = '/index.html'
-  }
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
+})
 
-  let ext = path.extname(pathName)
-
-  let typeExt = {
-    '.html': 'text/html',
-    '.js': 'text/javascript',
-    '.css': 'text/css'
-  }
-  let contentType = typeExt[ext] || 'text/plain'
-
-  fs.readFile(__dirname + pathName, (err, data) => {
-    if (err) {
-      res.writeHead(500)
-      return res.end('Error loading ' + pathName)
-    }
-    res.writeHead(200, { 'Content-Type': contentType })
-    res.end(data)
-  })
-}
+app.listen(process.env.PORT || 8080)
+console.log(__dirname)

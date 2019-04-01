@@ -15,5 +15,8 @@
 	"bugs": {
 		"url": "https://github.com/pandasa123/primeCanvas/issues"
 	},
-	"homepage": "https://github.com/pandasa123/primeCanvas#readme"
+	"homepage": "https://github.com/pandasa123/primeCanvas#readme",
+	"dependencies": {
+		"express": "^4.16.4"
+	}
 }
