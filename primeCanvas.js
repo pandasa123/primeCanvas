@@ -1,8 +1,9 @@
-var base = 12
-var amount = 144
+var base = 1
+var amount = 1
 const diameter = 5
 const space = 0.5
 const margin = 50
+var autoPlay = false
 
 function setup () {
   canvas = createCanvas(
@@ -36,20 +37,20 @@ function draw () {
 //   redraw()
 // }
 
-function keyPressed () {
-  if (base < 12) {
-    base += 1
-    amount = base * base
-    let $input = $('#dimInput')
-    $input.val(base)
-    $input.change()
-    // console.log(base)
-    // console.log(amount)
-    redraw()
-  } else {
-    alert('Min Value: 12')
-  }
-}
+// function keyPressed () {
+//   if (base < 12) {
+//     base += 1
+//     amount = base * base
+//     let $input = $('#dimInput')
+//     $input.val(base)
+//     $input.change()
+//     // console.log(base)
+//     // console.log(amount)
+//     redraw()
+//   } else {
+//     alert('Min Value: 12')
+//   }
+// }
 
 function isPrime (num) {
   for (let i = 2; i <= sqrt(num); ++i) {
@@ -86,8 +87,32 @@ $(document).ready(function () {
       amount = base * base
       redraw()
     } else {
-      alert('Min Value: 12')
+      alert('Max Value: 12')
+      inputVal = 1
+      $input.val(inputVal)
+      $input.change()
+      base = inputVal
     }
     return false
+  })
+  $('#playButton').click(() => {
+    autoPlay = !autoPlay
+    if (autoPlay) {
+      $('#playButton').text('Pause')
+      setInterval(() => {
+        if (base < 12) {
+          base += 1
+          amount = base * base
+          let $input = $('#dimInput')
+          $input.val(base)
+          $input.change()
+          redraw()
+        }
+      }, 1000)
+      autoPlay = false
+    } else {
+      $('#playButton').text('Play')
+      clearInterval()
+    }
   })
 })

@@ -22,7 +22,7 @@ span {
     cursor: pointer;
 }
 
-#inputDiv {
+#inputDiv, #playDiv {
     margin-top: 20%;
     /* margin: 100px; */
 }
@@ -40,7 +40,7 @@ span {
     text-align: center;
 }
 
-input {
+input, #playButton {
     height: 34px;
     width: 100px;
     text-align: center;
