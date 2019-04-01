@@ -4,6 +4,7 @@ const diameter = 5
 const space = 0.5
 const margin = 50
 var currPlaying = false
+var controlDisabled = false
 
 function setup () {
   canvas = createCanvas(
@@ -73,31 +74,35 @@ $(document).ready(function () {
     }
   })
 
-  $('.minus').click(function () {
-    let $input = $('#dimInput')
-    let inputVal = parseInt($input.val())
-    if (inputVal > 1) {
-      inputVal -= 1
-      $input.val(inputVal)
-      $input.change()
-      base = inputVal
-      amount = base * base
-      $('#numDisplayed').text(amount * amount)
-      redraw()
+  $('#dimInputMinus').click(function () {
+    if (controlDisabled) {
+      let $input = $('#dimInput')
+      let inputVal = parseInt($input.val())
+      if (inputVal > 1) {
+        inputVal -= 1
+        $input.val(inputVal)
+        $input.change()
+        base = inputVal
+        amount = base * base
+        $('#numDisplayed').text(amount * amount)
+        redraw()
+      }
     }
     return false
   })
-  $('.plus').click(function () {
-    let $input = $('#dimInput')
-    let inputVal = parseInt($input.val())
-    if (inputVal < 12) {
-      inputVal += 1
-      $input.val(inputVal)
-      $input.change()
-      base = inputVal
-      amount = base * base
-      $('#numDisplayed').text(amount * amount)
-      redraw()
+  $('#dimInputPlus').click(function () {
+    if (controlDisabled) {
+      let $input = $('#dimInput')
+      let inputVal = parseInt($input.val())
+      if (inputVal < 12) {
+        inputVal += 1
+        $input.val(inputVal)
+        $input.change()
+        base = inputVal
+        amount = base * base
+        $('#numDisplayed').text(amount * amount)
+        redraw()
+      }
     }
     return false
   })
@@ -105,7 +110,7 @@ $(document).ready(function () {
     console.log(currPlaying)
     if (!currPlaying) {
       currPlaying = true
-      $('#playButton').text('Pause')
+      disableAll(true)
       window.timer = setInterval(() => {
         if (base < 12) {
           base += 1
@@ -116,13 +121,11 @@ $(document).ready(function () {
           $input.change()
           redraw()
         } else {
-          clearInterval()
+          disableAll(false)
+          clearInterval(window.timer)
         }
       }, 900)
       currPlaying = false
-    } else {
-      $('#playButton').text('Play')
-      clearInterval(window.timer)
     }
   })
   $('#resetButton').click(() => {
@@ -139,3 +142,11 @@ $(document).ready(function () {
     saveCanvas('myCanvas' + base, 'png')
   })
 })
+
+function disableAll (val) {
+  controlDisabled = !val
+  $('#playButton').attr('disabled', val)
+  $('#dimInputMinus').attr('disabled', val)
+  $('#dimInputPlus').attr('disabled', val)
+  $('#dimInput').attr('disabled', val)
+}
