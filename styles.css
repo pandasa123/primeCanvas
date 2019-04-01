@@ -40,7 +40,7 @@ span {
     text-align: center;
 }
 
-input, #playButton {
+input, #playButton, #resetButton {
     height: 34px;
     width: 100px;
     text-align: center;
@@ -49,4 +49,8 @@ input, #playButton {
     border-radius: 4px;
     display: inline-block;
     vertical-align: middle;
+}
+
+#playButton, #resetButton {
+    margin-top: 5%;
 }

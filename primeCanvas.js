@@ -108,11 +108,19 @@ $(document).ready(function () {
           $input.change()
           redraw()
         }
-      }, 1000)
+      }, 800)
       autoPlay = false
     } else {
       $('#playButton').text('Play')
       clearInterval()
     }
+  })
+  $('#resetButton').click(() => {
+    base = 1
+    amount = 1
+    autoPlay = false
+    let $input = $('#dimInput')
+    $input.val(base)
+    $input.change()
   })
 })
