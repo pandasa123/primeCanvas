@@ -2001,6 +2001,6 @@
     }
   },
   "scripts": {
-    "start": "http-server ."
+    "start": "live-server ."
   }
 }
