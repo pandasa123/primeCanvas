@@ -22,7 +22,8 @@ span {
     cursor: pointer;
 }
 
-#inputDiv, #playDiv {
+#inputDiv,
+#playDiv {
     margin-top: 20%;
     /* margin: 100px; */
 }
@@ -40,8 +41,9 @@ span {
     text-align: center;
 }
 
-input, #playButton, #resetButton {
-    height: 34px;
+input,
+button {
+    /* height: 34px; */
     width: 100px;
     text-align: center;
     font-size: 26px;
@@ -51,6 +53,10 @@ input, #playButton, #resetButton {
     vertical-align: middle;
 }
 
-#playButton, #resetButton {
+button {
     margin-top: 5%;
+}
+
+#saveCanvas {
+    white-space: nowrap;
 }

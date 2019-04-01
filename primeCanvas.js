@@ -3,7 +3,7 @@ var amount = 1
 const diameter = 5
 const space = 0.5
 const margin = 50
-var autoPlay = false
+var currPlaying = false
 
 function setup () {
   canvas = createCanvas(
@@ -60,6 +60,18 @@ function isPrime (num) {
 }
 
 $(document).ready(function () {
+  $('#dimInput').change(function () {
+    let $input = $('#dimInput')
+    let inputVal = parseInt($input.val())
+    if (inputVal > 0 && inputVal < 13) {
+      base = inputVal
+      amount = base * base
+      redraw()
+    } else {
+      alert('Input must be 1 - 12')
+    }
+  })
+
   $('.minus').click(function () {
     let $input = $('#dimInput')
     let inputVal = parseInt($input.val())
@@ -70,10 +82,7 @@ $(document).ready(function () {
       base = inputVal
       amount = base * base
       redraw()
-    } else {
-      alert('Min Value: 1')
     }
-
     return false
   })
   $('.plus').click(function () {
@@ -86,18 +95,13 @@ $(document).ready(function () {
       base = inputVal
       amount = base * base
       redraw()
-    } else {
-      alert('Max Value: 12')
-      inputVal = 1
-      $input.val(inputVal)
-      $input.change()
-      base = inputVal
     }
     return false
   })
   $('#playButton').click(() => {
-    autoPlay = !autoPlay
-    if (autoPlay) {
+    // console.log(currPlaying)
+    if (!currPlaying) {
+      currPlaying = true
       $('#playButton').text('Pause')
       setInterval(() => {
         if (base < 12) {
@@ -107,20 +111,26 @@ $(document).ready(function () {
           $input.val(base)
           $input.change()
           redraw()
+        } else {
+          clearInterval()
         }
-      }, 800)
-      autoPlay = false
+      }, 900)
+      currPlaying = false
     } else {
-      $('#playButton').text('Play')
+      $('#playButton').text('wfe')
       clearInterval()
     }
   })
   $('#resetButton').click(() => {
     base = 1
     amount = 1
-    autoPlay = false
+    currPlaying = false
+    clearInterval()
     let $input = $('#dimInput')
     $input.val(base)
     $input.change()
+  })
+  $('#saveCanvasButton').click(() => {
+    saveCanvas('myCanvas' + base, 'png')
   })
 })

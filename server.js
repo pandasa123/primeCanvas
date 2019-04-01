@@ -12,4 +12,4 @@ app.get('/', (req, res) => {
 })
 
 app.listen(process.env.PORT || 8080)
-console.log(__dirname)
+// console.log(__dirname)
