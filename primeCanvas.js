@@ -99,11 +99,11 @@ $(document).ready(function () {
     return false
   })
   $('#playButton').click(() => {
-    // console.log(currPlaying)
+    console.log(currPlaying)
     if (!currPlaying) {
       currPlaying = true
       $('#playButton').text('Pause')
-      setInterval(() => {
+      window.timer = setInterval(() => {
         if (base < 12) {
           base += 1
           amount = base * base
@@ -117,15 +117,15 @@ $(document).ready(function () {
       }, 900)
       currPlaying = false
     } else {
-      $('#playButton').text('wfe')
-      clearInterval()
+      $('#playButton').text('Play')
+      clearInterval(window.timer)
     }
   })
   $('#resetButton').click(() => {
+    clearInterval(window.timer)
     base = 1
     amount = 1
     currPlaying = false
-    clearInterval()
     let $input = $('#dimInput')
     $input.val(base)
     $input.change()
